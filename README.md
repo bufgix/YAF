@@ -20,4 +20,5 @@ Ardından tarayızınızda localhost:5000 e gidin
   * Facebook
   * Twitter
   * Netflix
+  * Github
   * Instagram (old style)
