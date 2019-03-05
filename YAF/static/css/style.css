@@ -1,0 +1,28 @@
+body {
+    background-color: #1E1E1E !important;
+    color: white !important;
+}
+input[type=text], input[type=password] {
+    background-color: #181818;
+    color: #ced4da;
+}
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #181818;
+    color: white;
+}
+.panelform {
+    border: 2px solid white;
+}
+ul {
+    list-style-type: none;
+    height:400px;
+    overflow:hidden; 
+    overflow-y:scroll;
+    padding-left: 0px;
+}
+li {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid white;
+}
+

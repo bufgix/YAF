@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="banner text-center mt-5">
+        <img src="{{ url_for('static', filename='banner.png') }}" class="img-fluid"><br>
+        <h1 class="mt-2">You are Fish</h1><br>
+        <h3>YAF phishing aracına hoş geldiniz.</h3>
+        <a href="{{ admin_url }}" class="btn btn-outline-warning mt-2">Panele git</a>
+    </div>
+    
+    
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="panelform mt-5 p-3">
+        <form action="" method="post">
+            <div class="form-group">
+                <label>{{ form.page.label }}</label> 
+                {{ form.page(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {% if records[0] == '' %}
+                    <h3>Henüz bir kayıt işlenmedi</h3>
+                {% else %}
+                    <ul>
+                        {% for record in records %}
+                            <li>
+                                {{ record }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-primary") }}
+                    </div> 
+                </div>
+                <div class="col md-6 col-xs-6">
+                    <div class="form-group">
+                        <a class="btn btn-outline-warning" href="{{ url_for('main') }}">Sayafayı Gör    </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
