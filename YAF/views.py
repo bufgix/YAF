@@ -13,6 +13,7 @@ FAKE_PAGES = {
     'gh' : 'pages/github.html',
     'insta' : 'pages/instagram.html',
     'nf' : 'pages/netflix.html',
+    'orgn': 'pages/origin.html'
 }
 
 

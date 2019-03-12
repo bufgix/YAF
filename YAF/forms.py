@@ -7,7 +7,8 @@ class PanelForm(FlaskForm):
         ('tw', 'Twitter'),
         ('gh', 'Github'),
         ('insta', 'Instagram'),
-        ('nf', 'Netflix')
+        ('nf', 'Netflix'),
+        ('orgn', 'Origin')
     ])
     #newpagecode = TextAreaField('New page source code')
     submit = SubmitField('Save') 

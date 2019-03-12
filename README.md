@@ -21,3 +21,4 @@ Ardından tarayızınızda localhost:5000 e gidin
   * Twitter
   * Netflix
   * Instagram (old style)
+  * Origin
