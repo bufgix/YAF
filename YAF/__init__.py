@@ -52,4 +52,4 @@ def start_server(args):
 
     if not args.no_ngrok:
         run_with_ngrok(app)
-    app.run()
+    app.run(host="0.0.0.0")
