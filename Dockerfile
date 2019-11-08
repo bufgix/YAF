@@ -4,5 +4,6 @@ ADD . /YAF
 WORKDIR /YAF
 
 RUN pipenv install
+RUN pipenv run python setupadmin.py
 
 CMD [ "pipenv" , "run", "python", "run.py", "no-ngrok" ]
