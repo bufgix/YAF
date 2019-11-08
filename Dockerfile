@@ -4,7 +4,7 @@ ADD . /YAF
 WORKDIR /YAF
 
 RUN pip install pipenv
-RUN pipenv install
-RUN pipenv run python setupadmin.py
+RUN pipenv lock --requirements > requirements.txt
+RUN pip install -r requirements.txt
 
-CMD [ "pipenv" , "run", "python", "run.py", "no-ngrok" ]
+ENTRYPOINT [ "python", "run.py" ]

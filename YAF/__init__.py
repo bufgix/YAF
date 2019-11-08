@@ -6,7 +6,6 @@ from flask_login import logout_user
 
 from YAF.config import Config as flask_conf
 
-from configparser import SafeConfigParser
 import os
 
 
@@ -30,13 +29,27 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'main'
 
-config = SafeConfigParser()
-config.read(os.path.join(os.path.dirname(app.root_path), 'control.cfg'))
-
 from YAF import views
-
+from YAF.models import User
 
 def start_server(args):
+    db.create_all()
+    exists = User.query.first()
+    if args.username and args.password:
+        if exists:
+            print("Updating admin information...")
+            exists.username = args.username
+            exists.password = args.password
+        else:
+            print("Create admin profile...")
+            admin = User(username=args.username, password=args.password)
+            db.session.add(admin)
+        db.session.commit()
+    else:
+        if not exists:
+            print("No admin profile found. Set admin name and password !")
+            return
+
     if not args.no_ngrok:
         run_with_ngrok(app)
     app.run()

